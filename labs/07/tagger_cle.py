@@ -95,7 +95,7 @@ class Model(npfl138.TrainableModule):
 
         # TODO: With `cle` being the character-level embeddings of the unique words
         # of shape `[num_unique_words, 2 * cle_dim]`, create the representation of the
-        # (not necessary unique) sentence words by indexing the character-level
+        # (not necessarily unique) sentence words by indexing the character-level
         # embeddings with the `word_indices`. The result should have a shape
         # `[batch_size, max_sentence_length, 2 * cle_dim]`. You can use for example
         # the `torch.nn.functional.embedding` function.
@@ -153,12 +153,12 @@ class TrainableDataset(npfl138.TransformedDataset):
         # returns a pair of two PyTorch tensors:
         # - `unique_words` with shape `[num_unique_words, max_word_length]` containing
         #   each unique word as a sequence of character ids,
-        # - `words_indices` with shape `[num_sentences, max_sentence_length]`
+        # - `word_indices` with shape `[num_sentences, max_sentence_length]`
         #   containing for every word its index in `unique_words`.
-        unique_words, words_indices = ...
+        unique_words, word_indices = ...
         # TODO(tagger_we): Process `tag_ids` analogously to `word_ids`.
         tag_ids = ...
-        return (word_ids, unique_words, words_indices), tag_ids
+        return (word_ids, unique_words, word_indices), tag_ids
 
 
 def main(args: argparse.Namespace) -> dict[str, float]:
